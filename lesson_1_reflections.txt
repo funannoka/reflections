@@ -1,0 +1,75 @@
+Point: Each commit should have one clear logical purpose. Thos point also becomes a factor to consider when deciding when/how often to commit.
+using diff commad helped me pinpoint what lines were changed
+and sub sequently what error was made. It is also able to tell the new and old version.
+If the files differ by only one line it just tells you that the files differ and not specifics of the lines.
+Also if the files contail very long lines command tools like diff and Git become less useful
+
+each commit contains : commit ID, Author, date and message.
+
+commit ID: uniquely identifies each commit and lets you refer it
+git diff commitID1 commitID2 //difference in commit
+
+repository: collections of files saved in git, 1 commit could include multiple files, a commit is a collection of every file in the repository.
+
+git log --stat  //gives statistics on files that have changed in a commit.
+diff --git a/game.js b/game.js  //command for difference in files
+
+Git was designed with code in mind compared with other VCSs like dropbox,google drive
+
+Having easy access to the entire history of a file helps prrogramming efficiency in the long term. It makes it easier for a programmer to keep track of changes made and review them to easily find a bug or could help with instances where a once reloved function or task is desired to be used.
+
+Feature comparison chart
+       | Any Editor | Use  offline | Manual Save |
+ manual| Yes        | Yes          |             |
+ saving|            |              |             |
+ Git   | Yes        | Yes          | Yes         |  
+ GogDoc| No         | No           |             |
+ Drpbox| Yes        | No           |             |
+ wiki  | No         | No           |             |
+ SVN   | Yes        | No           |  Yes        |
+
+ It is reccomended that commits are kept small, because as the diff between two versions gets bigger it becomes harder to understand the commit therefore becoming less useful. A good rule of thumb is to make one commit per logical change.
+
+ Pros and cons of manually choosing wheen to create a commit: I think the advantage of manually choosing when to commit is that it allows for a more logical and efficient commit where we dont save changes to often or too sparingly. This way commits are made according and to represent logical changes in the code. The con is that if manual save method isnt executed efficiently it could lead to loss of changes due to not making commits when you should have, or it could bring about hard to understand commits that are inefficient and unuseful due to making the commit too large (essentially waiting too long before making a commit)
+
+Some version control systems (VCS) like Git allows saving multiple files in one commit while others like google docs treat each file seperately, this distinguishion sepereates these two Version control types. While VCSs like goolgle docs have their benefits and distinct advantages, Git emerges as belonging to a class of version control systems that provides an efficient means of keeping track of logical changes in an entire project, rather than having to keep track of individual files seperately, one is able to have version control of an entire project at a time by assigning to one commit the entire files in the repository/project.
+
+diff -> operates-on commit -> part-of repository -> part-of Git -> type-of Version control
+
+clone -> operates-on repository -> part-of Git
+git clone not only clones a repository to your own computer it also copies the commit history of the repository. only works on Git repos.
+
+command scp: copying a directory from one computer to the next does not have to be git
+
+log -> operates-on (commits) repository
+
+cloning & exploring the repo:
+ to clone a repository : git clone url
+ to see the diffs in color: git config --global color.ui auto
+ to see all commits in repo: git log
+ to see diff in commit: git diff originalcommit newcommit
+
+HEAD is what Git calls the commit you are currently on. You can “detach” the HEAD by switching to a previous commit.
+GHC, the compiler for a programming language called Haskell
+Octopus is a strategy Git uses to combine many different versions of code together
+
+git checkout:
+in Git checking out a commit means reversing the files to the way it was at the time that commit was made.
+
+Using version control allows a user to be more confident in making changes that could break something because previous state of the repository and previous commits could be accessed and analysed using git checkout, git log and git diff if something broke. One is able to explore pre-significant change in the code at a very low level without fear of breaking the entire project. Withouth version control if the project started working one would be reluctant to make changes with fear of breaking it, while with version control one can be more creative and ambitious to make the project better without fear of breaking it, therefore version control makes you a better programmer.
+
+git configurations:
+git config --global core.editor "subl -n -w"
+git config --global push.default upstream
+git config --global merge.conflictstyle diff3
+
+git-completion.bash enables tab completion
+git-prompt.sh enables special git features in the prompt also necessary for things like commit ID to show up in prompts
+
+bash - bourne again shell
+
+I think Git will be usefull to me when designing html/css based projects as well as verilog based projects, or projects in general that have multiple layers and features that may also require regular updates.
+
+pappu pakia game: fa4c6bade4970c282b3870ad16f1bde8164663a9
+commit with obstacules and glitchy bird fixed: 71d52709ddc4066e7a79a1d0a412e43429a0cdeb
+
