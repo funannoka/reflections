@@ -1,0 +1,54 @@
+Diff about Git: 
+Git repositories stores some meta-data about the history of the repository since it was created.  
+This metadata is actuall stored in the same directory but is stored as a hidden directory with a .git extension. The directory starts with a (.) dot to keep it hidden.
+
+To view all files in a directory including hidden files use command: ls -a
+
+Make a new repository:
+command: 'git init' to create a git repository
+command: 'git status' to view status of commit history,tracked files etc 
+
+What happens when you initialize a repository? Why do you need to do it?
+You need to initialize a repository in order to created a git repo, running git init creates a .git directory in the current directoy and creates a git repository of the files in the directory.
+
+stage area: intermediate stage between the working directory and the git repository. files can be added one at a time to the staging area, and then commited to the repository
+
+to add a file to the staging area: 'git add <file>'
+to remove a file from staging area: 'git reset <file>' or 'git reset' to remove all files from staging area.
+
+init -> operates-on repository 
+add -> operates-on staging area -> part-of Git
+status -> opereates-on staging area
+status -> opereates-on working directory
+
+
+How is the staging area different from the working directory and the repository? What value do you think it offers?
+
+The staging area is the intermediate area between the working directory and the git repo, it is a convenient way to select files from the working dir before commiting to the repo, it is especially convenient if all files in the working directory are not required to be place in the repo.
+
+to configure username and email for the repository: 
+command: git config --global user.name "Your Name"
+command: git config --global user.email you@example.com
+command: git commit --ammend --reset-author (if commit is already made)
+to commit the files in staging area: 'git commit' or 'git commit "message"'
+
+
+
+
+
+
+
+
+How can you use the staging area to make sure you have one commit per logical
+change?
+
+What are some situations when branches would be helpful in keeping your history
+organized? How would branches help?
+
+How do the diagrams help you visualize the branch structure?
+
+What is the result of merging two branches together? Why do we represent it in
+the diagram the way we do?
+
+What are the pros and cons of Git's automatic merging vs. always doing merges
+manually?
