@@ -1,0 +1,50 @@
+GitHub: used to share and collaborate projects. a website used to share an entire repository with people
+
+command: git config --global credential.helper osxkeychain to enable password autofill in bash in the future
+
+syncing repositories:
+syncing doesnt happen automatically
+to allow syncing data onto GitHub, it uses a concept of a remote repository not 'git clone', github doesnt allow direct recloning onto their servers. So we have to create an empty repository in a known location on github. To allow syncing data bewteen two repositories git has a concept of a remote repository which lets you store the location of the repository that you want to send and receive data from, what you sent and receive are commits. To sync with the remote repo, one can 'push' or 'pull' a branch/commit.
+
+command: 'git remote' (To view and create remotes).
+command: 'git remote add <name> <url>' (to add a repository as a remote)
+command: 'git remote -v' (to verify the remote repo has been added. v stands for verbose meaning git remote will output more info)
+command: 'git push <remote branch> <local branch>' (takes 2 arguements the remote to send changes to, and name of local repo which we'd like to push)
+
+When would you want to use a remote repository rather than keeping all your work local?
+Using a remote repository helps with sharing files or project to the public, and collaboration on project becomes more efficient.
+
+
+
+
+
+
+
+
+
+
+
+Why might you want to always pull changes manually rather than having Git
+automatically stay up-to-date with your remote repository?
+
+    Fill in your answer here
+
+Describe the differences between forks, clones, and branches.  When would you
+use one instead of another?
+
+    Fill in your answer here
+
+What is the benefit of having a copy of the last known state of the remote
+stored locally?
+
+    Fill in your answer here
+
+How would you collaborate without using Git or GitHub?  What would be easier,
+and what would be harder?
+
+    Fill in your answer here
+
+When would you want to make changes in a separate branch rather than directly in
+master?  What benefits does each approach have?
+
+    Fill in your answer here
