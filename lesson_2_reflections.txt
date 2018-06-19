@@ -6,7 +6,7 @@ To view all files in a directory including hidden files use command: ls -a
 
 Make a new repository:
 command: 'git init' to create a git repository
-command: 'git status' to view status of commit history,tracked files etc 
+command: 'git status' to recall whats currently in the staging area
 
 What happens when you initialize a repository? Why do you need to do it?
 You need to initialize a repository in order to created a git repo, running git init creates a .git directory in the current directoy and creates a git repository of the files in the directory.
@@ -25,30 +25,101 @@ status -> opereates-on working directory
 How is the staging area different from the working directory and the repository? What value do you think it offers?
 
 The staging area is the intermediate area between the working directory and the git repo, it is a convenient way to select files from the working dir before commiting to the repo, it is especially convenient if all files in the working directory are not required to be place in the repo.
+The staging area makes it easy and more efficient to keep commits small and add a commit one at a time for each logical change.
 
 to configure username and email for the repository: 
-command: git config --global user.name "Your Name"
-command: git config --global user.email you@example.com
-command: git commit --ammend --reset-author (if commit is already made)
-to commit the files in staging area: 'git commit' or 'git commit "message"'
+command: 'git config --global user.name "Your Name"'
+command: 'git config --global user.email you@example.com'
+command: 'git commit --ammend --reset-author' (if commit is already made)
+command: to commit the files in staging area: 'git commit' or 'git commit "message"'
 
+command: 'git diff' for checking difference of file in the working area to staging area. will show any line in the working area not added to the staging area yet.
+command:  'git diff --staged' to check the difference between files in the staging area and files in the most recent commit in the repository.
 
-
-
-
-
-
-
+command: 'git reset --hard' discards andy changes in to working directory or staging area. If this command is run you cant get those changes back because those changes have not been commited.
 How can you use the staging area to make sure you have one commit per logical
 change?
 
+Branches:
+Branches are labels for commits
+the master branch is the main branch in a Git repository, git creates this branch for you.
+detached head signals you that you are looking at a commit not labeled with a branch name.
+current last commit of a branch is often referred to as the tip of that branch.
+
+It is possible to 'checkout' a branch as you would a commit. If you checkout a branch then make a commit the branch label automatically updates to the new commit, the branch also stays checked out so it doesnt have to be checked out again.
+
+It is possible to have multiple branch labels attached to a single commit, making a new commit will onlpy update the branch that you have checked out.
+
+The process of combining two commits is known as merging, merging is used in combining branches together.
+
+command:'git branch':
+command to show current branches
+shows all branches 
+the branch with (*)asterisk means that branch is the branch currently checked out.
+command: 'git branch <branch_name>':
+when ever you give a 3rd arguement to command git branch it creates a branch using the 3rd arguement as the name.
+
+To checkout a branch use 
+command: 'git checkout branchlabel'
+
 What are some situations when branches would be helpful in keeping your history
 organized? How would branches help?
+Branches is particularly helpful to distinguish different modes or classes of a version. One can update a master and then checkout different version of the master branch. Branches help with organization, collaboration and expansion of a branch.
+
+Branches enable context switching, when working on a new feature or bug a branch can be created to compartmentalize that item.
+
+example of common branch labels:
+master branch: production quality branch that never breaks always works.
+development branch: where active work is taking place on your project.
+experimental branch & unique feature branches those are things that youre working on and fully expected to break, not production quality yet.
+
+command: 'git log --graph --oneline master coins' 
+to see graph of 2 branches.
+
+each commit knows about its parent, it stores a ref to a commit that was checked out when it was made. If you were on a branch when it was made it stores the commitID of what was then the tip of the branch. Commits dont care about branch names only the branches themselves store anything about the position of the branches.
+
+git log starts with the current commit or the lastest commit of any branch or  branches specified, and traces back until it gets to a commit that does not have a parent.
+commits can be lost if made and checked out to a branch with no label, this is because when you checkout to another branch there is no way of knowing reaching that commit except you noted its commit ID.
+
+Detached head state:
+when you checkout a commit. Head means current commit.
+in detached head state, head now points to a new commit withoout a branch label.
+
+command: 'git checkout -b new_branch_name'. 
+checks out a commit and creates a new branch label for it. this command is an equivalent of 2 commands: 1st running 'git branch new_branch_name' and then running 'git checkout new_branch_name'.
 
 How do the diagrams help you visualize the branch structure?
+The branch history diagrams helps visualize how git commit structures are formed, how commits can be made accesible and makes you consider actions that should be taken in order to prevent loss of a commit. the branch structure is more easily viewed as starting from the tip of the branch to the last commit with no known parent.
+
+Git merging:
+when merging two branches the order the commits will be displayed depends on its timestamp.
+After a branch is merged into another branch the smaller branch being merged into to main branch can then be deleted.
+
+If a branch is deleted and leaves some commits unreachable from existing branches, those commits will continue to be accessible by commit id, until Git’s garbage collection runs. This will happen automatically from time to time, unless you actively turn it off. You can also run this process manually with 'git gc'.
+
+command: 'git merge <branch_merged_into> <branch_merges_into>'
+command: 'git show commitID' shows you the changes introduced by a commit wrt its parent. this helpsto see the diff between a commit and its parent
+command: 'git branch -d branch_name' used to delete a branch label. an application could be deleting a branch after it has been merged to another branch(master). this command does not delete the commits contained in the branch just its branch label.
 
 What is the result of merging two branches together? Why do we represent it in
 the diagram the way we do?
+merging two branches together combines the commits in both branches in chronological order wrt their timestamps. Representing it in the historical diagram the way we do helps depict its structucal historical heirarchy from most recent commit to the commit which has no parent.
+
+git assumes if youre merging together two commits that have changes in the same general area, the authors would wanna know about it and have the chance to figure out for themselves which change to keep. This is a better approach (to have the users decide) than having git make inefficient guesses which can lead to weird conglemerate changes that dont make any sense.
+
+common ansector: changes made by both parties during a merge causing a merge conflict. 
+To commit after resolving merge conflict: 1st run 'git status' (optional), then run 'git add <file>' to add the changes to the staging area, then run 'git status' (optional), then run git commit'.
+
+command: 'git log -n num_of_commits' the -n flag means git will only show that number of commits.
+
+merge -> operates-on commit
+branch -> refers-to commit
+log -> operates-on branch
+diff -> operates-on branch
+
 
 What are the pros and cons of Git's automatic merging vs. always doing merges
 manually?
+
+The pro of automatically merging branches is that it saves the time of having to do it manually, and also provides a means of merging branches forgotten.
+con is that automatic merging could lead to merging conflicts

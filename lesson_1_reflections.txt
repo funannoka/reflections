@@ -44,7 +44,7 @@ command scp: copying a directory from one computer to the next does not have to 
 log -> operates-on (commits) repository
 
 cloning & exploring the repo:
- to clone a repository : git clone url
+ to clone a repository : git clone <url>
  to see the diffs in color: git config --global color.ui auto
  to see all commits in repo: git log
  to see diff in commit: git diff originalcommit newcommit

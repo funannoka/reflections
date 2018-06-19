@@ -1,4 +1,4 @@
-GitHub: used to share and collaborate projects. a website used to share an entire repository with people
+GitHub: used to share and collaborate projects. a service used to share repositories with people and allows users interact with git.
 
 command: git config --global credential.helper osxkeychain to enable password autofill in bash in the future
 
@@ -8,43 +8,78 @@ to allow syncing data onto GitHub, it uses a concept of a remote repository not 
 
 command: 'git remote' (To view and create remotes).
 command: 'git remote add <name> <url>' (to add a repository as a remote)
-command: 'git remote -v' (to verify the remote repo has been added. v stands for verbose meaning git remote will output more info)
-command: 'git push <remote branch> <local branch>' (takes 2 arguements the remote to send changes to, and name of local repo which we'd like to push)
+command: 'git remote -v' (to verify the remote repo has been added. v stands 
+		 for verbose meaning git remote will output more info)
+command: 'git push <remote branch> <local branch>' (takes 2 arguements the
+		 remote to send changes to, and name of local branch which we'd like to push)
 
-When would you want to use a remote repository rather than keeping all your work local?
+Q: When would you want to use a remote repository rather than keeping all your work local?
 Using a remote repository helps with sharing files or project to the public, and collaboration on project becomes more efficient.
 
+command: git pull <remote repo> <remote_branch_label>
+
+If you execute command and an identical file exists in the local directory, it doesnt replace it, rather it returns an error message, the file would have to be removed in order for a pull from remote to work.
 
 
-
-
-
-
-
-
-
-
-Why might you want to always pull changes manually rather than having Git
+Q: Why might you want to always pull changes manually rather than having Git
 automatically stay up-to-date with your remote repository?
 
-    Fill in your answer here
+Pulling manually allows me more control of changes being replaced. It essentially makes for less confusion and more control.
+ 
+Forking a Repository:
+A fork is a clone github makes for you on their own machines.
+Forking is a feature github uses to make a copy of a repository directly on the github servers without pulling the code to local machine first. One can fork an existing repo and have it appear on their own account, to make modifications one can pull code unto machine or edit directly on github.
+
+github keeps trach of no of people who've made forks on your repository and the forks are linked back all the way to the original repository. Also makes it easier to suggest changes back to the original.
+
 
 Describe the differences between forks, clones, and branches.  When would you
 use one instead of another?
+Forks provide a way to copy a repository on a different account to one's account on Github, one can then make changes and refer to their forked repo. This makes collaborations more efficient, one could fork a repo on GitHub, and then make a clone unto their local machine and access all commits on the branch and make new commits.
 
-    Fill in your answer here
+When you clone a repository, you not only get local copies of the remote branch that points to the same commit as the remote one, you also get a local copy of the last known position of that branch on the remote. This local copy of the remote branch position is labeled 'remote_name/branch_name' example (origin/master), and it only gets updated after the branch is pushed or pulled to/from origin.
+
+command: 'git fetch <remote_name>' can be used to update the local copy of the remote branch without updating the actual local branch.
+
+To update repository when changes have been made to both the local and github, one can fetch the branch and update the local copy of the remote position called 'origin/master'(example) and then merge the branch to the local master branch. 
+Essentially, git pull origin = 'git fetch origin' + 'git merge master origin/master'
+
+Fast-forward merge: done when branch being merged into (branch a) can be reached from branch being merged (branch b). Branch you're merging into has to be an ancestor of the branch you're merging from.
 
 What is the benefit of having a copy of the last known state of the remote
 stored locally?
 
-    Fill in your answer here
+Having a copy of the remote state stored on the local machine helps to keep track of changes that have not been synced.
+
 
 How would you collaborate without using Git or GitHub?  What would be easier,
 and what would be harder?
 
-    Fill in your answer here
+Without Git or GitHub, i usually use google drive and similar version control systems, as well as emailing updates. I see now how Git/GitHub would make collaborations easier, because if changes are commited regularly contributors can refer to partners work when ever required without waiting for an email to be sent for an update, and it is alot easier to see all the changes that have been made in a sort of organized chronological order.
+
+remote -> refers-to repository
+clone -> operates-on remote
+push -> operates-on remote and branch
+pull -> operates-on remote and branch
+merge -> part-of pull
+fork -> type-of clone 
+fork -> part-of Github
+fork -> operates-on repository
+fetch -> part-of pull
+fetch -> operates-on remote and branch
+pull request -> operates-on branch
+pull request -> part-of github
+merge -> part-of pull request
+fat-forward merge -> operates on branch
+
 
 When would you want to make changes in a separate branch rather than directly in
 master?  What benefits does each approach have?
 
-    Fill in your answer here
+It might be valuable to make changes in a seperate branch when one needs the changes evaluated before commiting to a main branch. Also it makes sense to make changes to a different branch when one wants to share a different version that contains an additional or different feature/function, but would still want the main branch as the default code.
+
+say my name bryson tiller : https://www.youtube.com/watch?v=neFgU4k3vEw
+
+.md (marked down) [text] (url)
+
+There's also BitBucket, another free Git hosting service that also has the benefit of giving you unlimited private repositories for free
